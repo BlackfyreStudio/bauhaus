@@ -121,7 +121,7 @@
 
 			reader.onload = function (e) {
 				$(self).next().css('background-image', 'url("' + e.target.result + '")');
-			}
+			};
 
 			reader.readAsDataURL(this.files[0]);
 		}
