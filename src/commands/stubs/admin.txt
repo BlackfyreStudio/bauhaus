@@ -3,7 +3,7 @@
 use KraftHaus\Bauhaus\Admin;
 
 /**
- * $NAME$
+ * Class $NAME$
  */
 class $NAME$Admin extends Admin
 {
