@@ -21,7 +21,12 @@ var paths = {
 		'bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
 		'bower_components/tinymce/tinymce.js',
 		'assets/javascripts/**/*.js'
-	]
+	],
+    fonts: [
+        'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/**.*',
+        'bower_components/font-awesome/fonts/**.*',
+        'assets/fonts/**.*'
+    ]
 };
 
 gulp.task('sass', function() {
@@ -37,6 +42,10 @@ gulp.task('uglify', function () {
 		}))
 		.pipe(rename('application.min.js'))
 		.pipe(gulp.dest('public/javascripts'));
+});
+
+gulp.task('fonts', function() {
+    gulp.src(paths.fonts).pipe(gulp.dest('public/fonts'));
 });
 
 gulp.task('watch', function () {

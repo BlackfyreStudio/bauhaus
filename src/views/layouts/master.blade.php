@@ -8,9 +8,7 @@
 
 	<title>{{ Config::get('bauhaus::admin.title') }}</title>
 
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ asset('packages/krafthaus/bauhaus/stylesheets/application.css') }}">
-	<link rel="stylesheet" type="text/css" href="http://eonasdan.github.io/bootstrap-datetimepicker/content/bootstrap-datetimepicker.css">
 
 	@foreach (Config::get('bauhaus::admin.assets.stylesheets') as $stylesheet)
 		<link rel="stylesheet" href="{{ $stylesheet }}">
@@ -58,7 +56,6 @@
 		</div>
 	</div>
 
-	<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
 	<script src="{{ asset('packages/krafthaus/bauhaus/javascripts/application.min.js') }}"></script>
 	@yield('scripts')
 
