@@ -1,12 +1,12 @@
 {
   "name": "krafthaus-bauhaus",
   "version": "1.0",
-  "directory": "app/assets/external",
   "dependencies": {
     "jquery": "1.11.1",
     "bootstrap-sass-official": "3.1.1",
     "font-awesome": "4.1.0",
     "bootstrap-datetimepicker": "0.0.11",
-	"tinymce": "4.1.2"
+    "tinymce": "4.1.2",
+    "momentjs": "~2.9.0"
   }
 }

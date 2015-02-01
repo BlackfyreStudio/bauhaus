@@ -11,6 +11,7 @@ var paths = {
 	],
 	javascripts: [
 		'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/momentjs/min/moment-with-locales.js',
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js',
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js',
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js',
