@@ -15,13 +15,13 @@ return [
 	 * Package URI.
 	 * @var string
 	 */
-	'uri' => 'admin',
+	'uri' => 'throne',
 
 	/**
 	 * The package main title.
 	 * @var string
 	 */
-	'title' => 'Bauhaus',
+	'title' => 'VOID',
 
 	/**
 	 * The directory where the bauhaus models are located.
