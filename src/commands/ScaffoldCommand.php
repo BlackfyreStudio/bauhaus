@@ -57,6 +57,11 @@ class ScaffoldCommand extends Command
 
 		$stub = file_get_contents(__DIR__ . '/stubs/admin.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
+
+		if (!is_writable($directory)) {
+			mkdir($directory);
+		}
+
 		file_put_contents(app_path($directory . '/' . ucfirst($model) . 'Admin.php'), $stub);
 
 		// Create the migration
