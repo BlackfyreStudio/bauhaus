@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * $NAME$
+ */
 class $NAME$ extends \Eloquent
 {
 

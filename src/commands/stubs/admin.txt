@@ -2,6 +2,9 @@
 
 use KraftHaus\Bauhaus\Admin;
 
+/**
+ * $NAME$
+ */
 class $NAME$Admin extends Admin
 {
 
