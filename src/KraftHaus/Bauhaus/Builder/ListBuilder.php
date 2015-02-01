@@ -82,6 +82,19 @@ class ListBuilder extends BaseBuilder
 				$name  = $clone->getName();
 				$value = $item->{$name};
 
+				// If $value is empty, check if dot syntax is used to get field from relationship/model
+				if(empty($value) && strpos($name, '.') !== false) {
+					$parts = explode('.', $name);
+
+					$model = $parts[0];
+					$field = $parts[1];
+
+					if(method_exists($item, $model))
+					{
+						$value = $item->{$model}->{$field};
+					}
+				}
+
 				if ($clone->hasBefore()) {
 					$before = $clone->getBefore();
 					$value  = $before($value);

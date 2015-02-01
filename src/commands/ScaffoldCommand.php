@@ -50,7 +50,7 @@ class ScaffoldCommand extends Command
 		// Create the model
 		$stub = file_get_contents(__DIR__ . '/stubs/model.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
-		file_put_contents(app_path('models/' . ucfirst($model) . '.php'), $stub);
+		file_put_contents(app_path('models/' . Str::studly($model) . '.php'), $stub);
 
 		// Create the admin controller
 		$directory = Config::get('bauhaus::admin.directory');
@@ -58,6 +58,7 @@ class ScaffoldCommand extends Command
 		$stub = file_get_contents(__DIR__ . '/stubs/admin.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
 
+		/* Check if the admin directory exists, if not then create it */
 		if (!is_writable($directory)) {
 			mkdir($directory);
 		}
