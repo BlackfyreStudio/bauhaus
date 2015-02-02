@@ -136,7 +136,7 @@ class Builder
 				$html.= sprintf('<li><p class="navbar-text">%s</p></li>', $value['text']);
 			} elseif (isset($value['image'])) {
 				$html.= sprintf('<li><img src="%s" class="navbar-image"></li>', $value['image']);
-			} else {
+			} elseif (isset($value['title'])) {
 				$html.= sprintf('<li><a href="%s">%s%s</a></li>', $url, $icon, $value['title']);
 			}
 		}

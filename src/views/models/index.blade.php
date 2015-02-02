@@ -131,8 +131,8 @@
 									@endforeach
 
 									<td align="right">
-										<a href="{{ route('admin.model.edit', [$name, $item->getIdentifier()]) }}" class="btn btn-xs btn-default">
-											{{ trans('bauhaus::index.button.edit') }}
+										<a href="{{ route('admin.model.edit', [$name, $item->getIdentifier()]) }}" class="btn btn-xs btn-warning">
+											<i class="fa fa-edit"></i>&nbsp;{{ trans('bauhaus::index.button.edit') }}
 										</a>
 									</td>
 

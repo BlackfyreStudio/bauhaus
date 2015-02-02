@@ -36,13 +36,16 @@ class ModelController extends Controller
 	 */
 	public function index($name)
 	{
+
+		$name = str_replace('.','\\',$name);
+
 		$model = Bauhaus::getInstance($name)
 			->buildList()
 			->buildFilters()
 			->buildScopes();
 
 		return View::make($model->getView('list'))
-			->with('name',  $name)
+			->with('name',  str_replace('\\','.',$name))
 			->with('model', $model);
 	}
 

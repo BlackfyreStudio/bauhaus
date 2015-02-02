@@ -163,7 +163,7 @@ class Admin
 	 */
 	public static function getInstance($name)
 	{
-		$model = sprintf('\\%sAdmin', Str::studly($name));
+		$model = sprintf('\\%sAdmin', Str::studly(str_replace('.','\\',$name)));
 		$model = new $model;
 
 		return $model;
