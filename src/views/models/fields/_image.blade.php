@@ -10,7 +10,7 @@
                         <div class="image-file-wrapper">
                             {{ Form::file($field->getName() . '[]', $field->getAttributes()) }}
 
-                            @if ($value)
+                            @if (strlen($value)>0)
                                 <div class="image-preview" style="background-image: url('{{ asset($value) }}');"></div>
                             @else
                                 <div class="image-preview"></div>
@@ -32,7 +32,7 @@
             </div>
         @else
             {{ Form::file($field->getName(), $field->getAttributes()) }}
-            @if ($field->getValue() !== null)
+            @if ($field->getValue() !== null && strlen($field->getValue())>0)
                 <div class="row">
                     <div class="col-sm-12">
                         <img src="{{ asset($field->getValue()) }}" width="100%">
