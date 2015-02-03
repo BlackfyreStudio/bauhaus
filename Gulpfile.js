@@ -2,23 +2,22 @@ var gulp   = require('gulp'),
 	watch  = require('gulp-watch'),
 	sass   = require('gulp-sass'),
 	uglify = require('gulp-uglifyjs'),
+	concat = require('gulp-concat'),
 	rename = require('gulp-rename');
 
 var paths = {
 	stylesheets: [
-		'assets/stylesheets/**/*.scss',
-		'bower_components/bootstrap-sass-official/vendor/assets/stylesheets/**/*.scss'
+		'assets/stylesheets/**/*.scss'
 	],
 	javascripts: [
-		'bower_components/jquery/dist/jquery.min.js',
+
+		'bower_components/jquery/dist/jquery.js',
+        'bower_components/markdown/lib/markdown.js',
         'bower_components/momentjs/min/moment-with-locales.js',
-		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js',
-		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js',
-		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js',
-		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js',
-		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js',
-		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js',
+		'bower_components/bootstrap/dist/js/bootstrap.js',
 		'bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+		'bower_components/to-markdown/src/to-markdown.js',
+		'bower_components/bootstrap-markdown/js/bootstrap-markdown.js',
 		'bower_components/tinymce/tinymce.js',
 		'assets/javascripts/**/*.js'
 	],
@@ -37,10 +36,10 @@ gulp.task('sass', function() {
 
 gulp.task('uglify', function () {
 	return gulp.src(paths.javascripts)
+        .pipe(concat('application.min.js'))
 		.pipe(uglify({
 			mangle: false
 		}))
-		.pipe(rename('application.min.js'))
 		.pipe(gulp.dest('public/javascripts'));
 });
 

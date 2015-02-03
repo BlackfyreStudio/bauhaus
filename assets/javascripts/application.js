@@ -2,131 +2,123 @@
  * 
  */
 
-;(function (window, document, undefined) {
+// External links handling
+$('a[rel*="external"]').click(function () {
+    $(this).attr('target', '_blank');
+});
 
-	'use strict';
+// auto tab selection
+$('.nav-tabs a:first').tab('show');
+$(document).on('loaded.bs.modal', function () {
+    $('.nav-tabs a:first').tab('show');
+});
 
-	// External links handling
-	$('a[rel*="external"]').click(function () {
-		$(this).attr('target', '_blank');
-	});
+// DateTime picker
+$('.field-datetime').datetimepicker({
+    icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up:   "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+    },
+    pick12HourFormat: false
+});
 
-	// auto tab selection
-	$('.nav-tabs a:first').tab('show');
-	$(document).on('loaded.bs.modal', function () {
-		$('.nav-tabs a:first').tab('show');
-	});
+// Date picker
+$('.field-date').datetimepicker({
+    icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up:   "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+    },
+    pickTime: false
+});
 
-	// DateTime picker
-	$('.field-datetime').datetimepicker({
-		icons: {
-			time: "fa fa-clock-o",
-			date: "fa fa-calendar",
-			up:   "fa fa-arrow-up",
-			down: "fa fa-arrow-down"
-		},
-		pick12HourFormat: false
-	});
+// Time picker
+$('.field-time').datetimepicker({
+    icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up:   "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+    },
+    pickDate: false
+});
 
-	// Date picker
-	$('.field-date').datetimepicker({
-		icons: {
-			time: "fa fa-clock-o",
-			date: "fa fa-calendar",
-			up:   "fa fa-arrow-up",
-			down: "fa fa-arrow-down"
-		},
-		pickTime: false
-	});
+// Ajax form submit
+$(document).on('submit', 'form[data-async]', function (e) {
+    var $form   = $(this),
+        $target = $($form.attr('data-target'));
 
-	// Time picker
-	$('.field-time').datetimepicker({
-		icons: {
-			time: "fa fa-clock-o",
-			date: "fa fa-calendar",
-			up:   "fa fa-arrow-up",
-			down: "fa fa-arrow-down"
-		},
-		pickDate: false
-	});
+    $.ajax({
+        type: $form.attr('method'),
+        url:  $form.attr('action'),
+        data: $form.serialize(),
+        success: function (data) {
+            $target.html(data);
+        }
+    });
 
-	// Ajax form submit
-	$(document).on('submit', 'form[data-async]', function (e) {
-		var $form   = $(this),
-			$target = $($form.attr('data-target'));
+    e.preventDefault();
+});
 
-		$.ajax({
-			type: $form.attr('method'),
-			url:  $form.attr('action'),
-			data: $form.serialize(),
-			success: function (data) {
-				$target.html(data);
-			}
-		});
+// Init tinymce
+tinymce.init({
+    selector: '.form-wysiwyg'
+});
 
-		e.preventDefault();
-	});
+// Infinite fields
+$(document)
+    .on('click', '.field-infinite a[data-event="field-add"]', function () {
+        var clone = $(this).closest('[data-multiply]').clone();
 
-	// Init tinymce
-	tinymce.init({
-		selector: '.form-wysiwyg'
-	});
+        $(clone).find('input').val('');
+        $(clone).find('.image-preview').css('background-image', '');
+        $(this).closest('[data-multiply]').after(clone);
 
-	// Infinite fields
-	$(document)
-		.on('click', '.field-infinite a[data-event="field-add"]', function () {
-			var clone = $(this).closest('[data-multiply]').clone();
+        redrawInfiniteFieldButtons();
+    }).on('click', '.field-infinite a[data-event="field-remove"]', function () {
+        $(this).closest('[data-multiply]').remove();
 
-			$(clone).find('input').val('');
-			$(clone).find('.image-preview').css('background-image', '');
-			$(this).closest('[data-multiply]').after(clone);
+        redrawInfiniteFieldButtons();
+    });
 
-			redrawInfiniteFieldButtons();
-		}).on('click', '.field-infinite a[data-event="field-remove"]', function () {
-			$(this).closest('[data-multiply]').remove();
+function redrawInfiniteFieldButtons () {
+    $('.form-group').each(function () {
+        var addFields    = $(this).find('[data-event="field-add"]'),
+            removeFields = $(this).find('[data-event="field-remove"]');
 
-			redrawInfiniteFieldButtons();
-		});
+        for (var i = 0; i < addFields.length -1; i++) {
+            addFields.eq(i).hide();
+            removeFields.eq(i).show();
+        }
 
-	function redrawInfiniteFieldButtons () {
-		$('.form-group').each(function () {
-			var addFields    = $(this).find('[data-event="field-add"]'),
-				removeFields = $(this).find('[data-event="field-remove"]');
+        // multiple limit
+        var limit = $(this).find('input').last().attr('multiple-limit');
+        if (limit != undefined) {
+            var fields = $(this).find('input').length;
 
-			for (var i = 0; i < addFields.length -1; i++) {
-				addFields.eq(i).hide();
-				removeFields.eq(i).show();
-			}
+            if (fields >= limit) {
+                addFields.last().hide();
+            } else {
+                addFields.last().show();
+            }
+        }
+    });
+}
 
-			// multiple limit
-			var limit = $(this).find('input').last().attr('multiple-limit');
-			if (limit != undefined) {
-				var fields = $(this).find('input').length;
+// Image upload
+$(document).on('change', '.image-file-wrapper input[type=file]', function () {
+    var self = $(this);
 
-				if (fields >= limit) {
-					addFields.last().hide();
-				} else {
-					addFields.last().show();
-				}
-			}
-		});
-	}
+    if (this.files && this.files[0]) {
+        var reader = new FileReader();
 
-	// Image upload
-	$(document).on('change', '.image-file-wrapper input[type=file]', function () {
-		var self = $(this);
+        reader.onload = function (e) {
+            $(self).next().css('background-image', 'url("' + e.target.result + '")');
+        };
 
-		if (this.files && this.files[0]) {
-			var reader = new FileReader();
-
-			reader.onload = function (e) {
-				$(self).next().css('background-image', 'url("' + e.target.result + '")');
-			};
-
-			reader.readAsDataURL(this.files[0]);
-		}
-	});
-
-	// ...
-
-})(jQuery, window, document);
+        reader.readAsDataURL(this.files[0]);
+    }
+});
