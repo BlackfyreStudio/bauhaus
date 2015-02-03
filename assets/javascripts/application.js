@@ -16,21 +16,30 @@ $(document).on('loaded.bs.modal', function () {
 // DateTime picker
 $('.field-datetime').datetimepicker({
     icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up:   "fa fa-arrow-up",
-        down: "fa fa-arrow-down"
+        time: 'fa fa-clock-o',
+        date: 'fa fa-calendar',
+        up: 'fa fa-arrow-up',
+        down: 'fa fa-arrow-up',
+        previous: 'fa fa-arrow-left',
+        next: 'fa fa-arrow-right',
+        today: 'glyphicon glyphicon-screenshot',
+        clear: 'glyphicon glyphicon-trash'
     },
-    pick12HourFormat: false
+    'sideBySide': true,
+    'showTodayButton': true
 });
 
 // Date picker
 $('.field-date').datetimepicker({
     icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up:   "fa fa-arrow-up",
-        down: "fa fa-arrow-down"
+        time: 'fa fa-clock-o',
+        date: 'fa fa-calendar',
+        up: 'fa fa-arrow-up',
+        down: 'fa fa-arrow-up',
+        previous: 'fa fa-arrow-left',
+        next: 'fa fa-arrow-right',
+        today: 'glyphicon glyphicon-screenshot',
+        clear: 'glyphicon glyphicon-trash'
     },
     pickTime: false
 });
@@ -38,10 +47,14 @@ $('.field-date').datetimepicker({
 // Time picker
 $('.field-time').datetimepicker({
     icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up:   "fa fa-arrow-up",
-        down: "fa fa-arrow-down"
+        time: 'fa fa-clock-o',
+        date: 'fa fa-calendar',
+        up: 'fa fa-arrow-up',
+        down: 'fa fa-arrow-up',
+        previous: 'fa fa-arrow-left',
+        next: 'fa fa-arrow-right',
+        today: 'glyphicon glyphicon-screenshot',
+        clear: 'glyphicon glyphicon-trash'
     },
     pickDate: false
 });
