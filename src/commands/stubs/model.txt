@@ -1,15 +1,19 @@
 <?php
 
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Cartalyst\Tags\TaggableTrait;
+use Cartalyst\Tags\TaggableInterface;
 
 /**
  * Class $NAME$
  */
-class $NAME$ extends \Eloquent
+class $NAME$ extends \Eloquent implements TaggableInterface
 {
 
     /* By default we don't allow data to be fully deleted */
     use SoftDeletingTrait;
+    /* Add tags by Cartalyst/Tags */
+    use TaggableTrait;
 
     /* To prevent mass assignment exception */
     protected $guarded = array('_token');
