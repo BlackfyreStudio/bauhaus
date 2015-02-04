@@ -135,3 +135,27 @@ $(document).on('change', '.image-file-wrapper input[type=file]', function () {
         reader.readAsDataURL(this.files[0]);
     }
 });
+
+var titleField = $('input[name="title"]'),
+    slugField = $('input[name="slug"]'),
+    slugLabel = $('label[for="slug"]');
+
+if (titleField.length > 0 && slugField.length > 0) {
+    titleField.off('change').on('change', function() {
+        var labelOriginal = slugLabel.html();
+
+        slugLabel.append('&nbsp;<i class="fa fa-cog fa-spin"></i>');
+
+        $.ajax({
+            data: {
+                toSlug: titleField.val()
+            },
+            type: 'post',
+            url: '/throne/slugger',
+            success: function (returnData) {
+                slugField.val(returnData.response);
+                slugLabel.html(labelOriginal);
+            }
+        });
+    });
+}

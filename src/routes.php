@@ -57,6 +57,13 @@ Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 			'uses' => 'KraftHaus\Bauhaus\ModelController@export'
 		])->where('type', 'json|xml|csv|xls');
 
+		Route::post('slugger',[
+			'as'=>'admin.slugger',
+			function() {
+				return Response::json(['response'=>Str::slug(Input::get('toSlug'))]);
+			}
+		]);
+
 		// extra route includes
 		require_once __DIR__ . '/routes/modals.php';
 	});

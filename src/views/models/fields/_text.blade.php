@@ -1,5 +1,5 @@
 <div class="form-group {{ $errors->has($field->getName()) ? 'has-error' : '' }}">
-	<label class="col-sm-3 control-label">{{ $field->getLabel() }}</label>
+	{{Form::label($field->getName(),$field->getLabel(),['class'=>'col-sm-3 control-label'])}}
 	<div class="col-sm-9">
 
 		@if ($field->isMultiple())
