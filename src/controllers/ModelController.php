@@ -32,7 +32,7 @@ class ModelController extends Controller
 	 * @param  string $name
 	 * 
 	 * @access public
-	 * @return Response
+	 * @return View
 	 */
 	public function index($name)
 	{
@@ -52,7 +52,7 @@ class ModelController extends Controller
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @param  string $model
+	 * @param  string $name
 	 * 
 	 * @access public
 	 * @return Response
@@ -72,7 +72,7 @@ class ModelController extends Controller
 	 * @param  string $name
 	 * 
 	 * @access public
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function store($name)
 	{
@@ -109,7 +109,7 @@ class ModelController extends Controller
 	 * @param  int    $id
 	 *
 	 * @access public
-	 * @return Response
+	 * @return View
 	 */
 	public function edit($name, $id)
 	{
@@ -128,7 +128,7 @@ class ModelController extends Controller
 	 * @param  int  $id
 	 *
 	 * @access public
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function update($name, $id)
 	{
@@ -165,7 +165,7 @@ class ModelController extends Controller
 	 * @param  int  $id
 	 *
 	 * @access public
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function multiDestroy($name)
 	{
