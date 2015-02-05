@@ -31,6 +31,8 @@ class ModelController extends Controller
 	 */
 	public function delete($name)
 	{
+		$name = str_replace('.','\\',$name);
+		
 		$model = sprintf('\\%sAdmin', Str::studly($name));
 		$model = (new $model)->buildForm();
 

@@ -6469,6 +6469,10 @@ button.close {
   position: fixed;
   width: 100%; }
 
+/* Fix modal */
+.modal-dialog {
+  z-index: 1060; }
+
 body {
   padding-top: 50px;
   background: #fff;

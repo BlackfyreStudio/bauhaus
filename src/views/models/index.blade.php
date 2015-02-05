@@ -70,6 +70,13 @@
 			{{ Session::get('message.success') }}
 		</div>
 	@endif
+	@if (Session::has('message.error'))
+		<div class="alert alert-danger">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>{{ trans('bauhaus::messages.error.title') }}</strong>
+			{{ Session::get('message.error') }}
+		</div>
+	@endif
 
 	@if (Input::has('_filtering'))
 		<div class="alert alert-warning">

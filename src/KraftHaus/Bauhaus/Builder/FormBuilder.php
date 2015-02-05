@@ -246,6 +246,10 @@ class FormBuilder extends BaseBuilder
 		} else {
 			$model = $model::create($this->getInput());
 		}
+		
+		if ($model instanceof \Illuminate\Http\RedirectResponse) {
+			$model->send();
+		}
 
 		// Set the primary id from the `new` model
 		$this->setIdentifier($model->{$primaryKey});

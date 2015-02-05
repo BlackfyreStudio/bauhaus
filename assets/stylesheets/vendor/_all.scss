@@ -3,3 +3,9 @@
 @import "../../../bower_components/font-awesome/scss/font-awesome";
 @import "bootsrap-datetimepicker";
 @import "bootstrap-markdown";
+
+/* Fix modal */
+.modal-dialog {
+  z-index: 1060;
+  
+}
