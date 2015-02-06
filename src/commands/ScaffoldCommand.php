@@ -55,6 +55,8 @@ class ScaffoldCommand extends Command
 		$stub = str_replace('$NAME$', $modelName, $stub);
 		file_put_contents(app_path('models/' . $modelName . '.php'), $stub);
 
+		$this->info('Model created: ' . app_path('models/' . $modelName . '.php'));
+
 		// Create the admin controller
 		$directory = Config::get('bauhaus::admin.directory');
 
@@ -67,6 +69,8 @@ class ScaffoldCommand extends Command
 		}
 
 		file_put_contents(app_path($directory . '/' . ucfirst($model) . 'Admin.php'), $stub);
+
+		$this->info('Admin controller created: ' . app_path($directory . '/' . ucfirst($model) . 'Admin.php'));
 
 		// Create the migration
 		$this->call('migrate:make', [
@@ -83,6 +87,8 @@ class ScaffoldCommand extends Command
 			'name'=>$modelName
 		]);
 
+		$this->info('Permission created: ' . $modelName);
+
 		/*
 		 * Update the admin group with the new permission
 		 */
@@ -93,6 +99,8 @@ class ScaffoldCommand extends Command
 
 		$adminGroup->permissions = $permissions;
 		$adminGroup->save();
+
+		$this->info('General permission assigned to group: ' . $adminGroup->getName());
 
 	}
 
