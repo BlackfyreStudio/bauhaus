@@ -23,6 +23,12 @@ return [
 
 	'modal' => [
 		'loading' => 'Loading...'
+	],
+	'permissions' => [
+		'read' => 'Read',
+		'create' => 'Create',
+		'update' => 'Update',
+		'delete' => 'Delete'
 	]
 
 ];

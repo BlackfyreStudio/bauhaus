@@ -37,9 +37,15 @@ class FormMapper extends BaseMapper
 	 */
 	public function __call($type, array $arguments)
 	{
+		$typeOrig = $type;
 		$name  = array_shift($arguments);
 		$type  = sprintf('\\KraftHaus\\Bauhaus\\Field\\%sField', Str::studly($type));
+		
+		
+		
 		$field = new $type($name, $this->getAdmin());
+
+		
 
 		// Set default value
 		if (isset($arguments[0])) {
@@ -47,6 +53,7 @@ class FormMapper extends BaseMapper
 		}
 
 		$this->fields[$name] = $field;
+
 
 		if ($this->getTab() !== null) {
 			$field->setTab($this->tab);

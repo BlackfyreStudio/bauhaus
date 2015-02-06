@@ -11,7 +11,6 @@ namespace KraftHaus\Bauhaus\Field;
  * file that was distributed with this source code.
  */
 
-use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\View;
 
 /**

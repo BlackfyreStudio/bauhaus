@@ -318,7 +318,12 @@ class FormBuilder extends BaseBuilder
 
 		// Model update hook
 		if (method_exists($this->getMapper()->getAdmin(), 'update')) {
-			$this->getMapper()->getAdmin()->update($this->getInput());
+			
+			$result = $this->getMapper()->getAdmin()->update($this->getInput());
+
+			if ($result instanceof \Illuminate\Http\RedirectResponse) {
+				$result->send();
+			}
 		} else {
 			$model::find($this->getIdentifier())
 				->update($this->getInput());
