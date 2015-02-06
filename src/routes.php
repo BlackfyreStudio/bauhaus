@@ -19,37 +19,44 @@ Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 
 		Route::get('model/{model}', [
 			'as'   => 'admin.model.index',
-			'uses' => 'KraftHaus\Bauhaus\ModelController@index'
+			'uses' => 'KraftHaus\Bauhaus\ModelController@index',
+			'before' => 'hasRead'
 		]);
 
 		Route::get('model/{model}/create', [
 			'as'   => 'admin.model.create',
-			'uses' => 'KraftHaus\Bauhaus\ModelController@create'
+			'uses' => 'KraftHaus\Bauhaus\ModelController@create',
+			'before' => 'hasCreate'
 		]);
 
 		Route::post('model/{model}', [
 			'as'   => 'admin.model.store',
-			'uses' => 'KraftHaus\Bauhaus\ModelController@store'
+			'uses' => 'KraftHaus\Bauhaus\ModelController@store',
+			'before' => 'hasCreate'
 		]);
 
 		Route::get('model/{model}/{id}', [
 			'as'   => 'admin.model.edit',
-			'uses' => 'KraftHaus\Bauhaus\ModelController@edit'
+			'uses' => 'KraftHaus\Bauhaus\ModelController@edit',
+			'before' => 'hasUpdate'
 		]);
 
 		Route::put('model/{model}/{id}', [
 			'as'   => 'admin.model.update',
-			'uses' => 'KraftHaus\Bauhaus\ModelController@update'
+			'uses' => 'KraftHaus\Bauhaus\ModelController@update',
+			'before' => 'hasUpdate'
 		]);
 
 		Route::delete('model/{model}/{id}', [
 			'as'   => 'admin.model.destroy',
-			'uses' => 'KraftHaus\Bauhaus\ModelController@destroy'
+			'uses' => 'KraftHaus\Bauhaus\ModelController@destroy',
+			'before' => 'hasDelete'
 		]);
 
 		Route::post('model/{model}/multi-destroy', [
 			'as'   => 'admin.model.multi-destroy',
-			'uses' => 'KraftHaus\Bauhaus\ModelController@multiDestroy'
+			'uses' => 'KraftHaus\Bauhaus\ModelController@multiDestroy',
+			'before' => 'hasDelete'
 		]);
 
 		Route::get('model/{model}/export/{type}', [

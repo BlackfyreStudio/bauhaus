@@ -44,19 +44,22 @@ class ScaffoldCommand extends Command
 	 */
 	public function fire()
 	{
+
+
 		$model = $this->option('model');
 		$plural = Str::plural($model);
+		$modelName = Str::studly($model);
 
 		// Create the model
 		$stub = file_get_contents(__DIR__ . '/stubs/model.txt');
-		$stub = str_replace('$NAME$', Str::studly($model), $stub);
-		file_put_contents(app_path('models/' . Str::studly($model) . '.php'), $stub);
+		$stub = str_replace('$NAME$', $modelName, $stub);
+		file_put_contents(app_path('models/' . $modelName . '.php'), $stub);
 
 		// Create the admin controller
 		$directory = Config::get('bauhaus::admin.directory');
 
 		$stub = file_get_contents(__DIR__ . '/stubs/admin.txt');
-		$stub = str_replace('$NAME$', Str::studly($model), $stub);
+		$stub = str_replace('$NAME$', $modelName, $stub);
 
 		/* Check if the admin directory exists, if not then create it */
 		if (!is_writable($directory)) {
@@ -71,6 +74,26 @@ class ScaffoldCommand extends Command
 			'--table'  => $plural,
 			'--create' => true
 		]);
+
+		/*
+		 * Save the new permission group
+		 */
+		\Eloquent::unguard();
+		\KraftHaus\BauhausUser\PermissionRegister::create([
+			'name'=>$modelName
+		]);
+
+		/*
+		 * Update the admin group with the new permission
+		 */
+		$adminGroup = \Sentry::findGroupById(1);
+
+		$permissions = $adminGroup->getPermissions();
+		$permissions[$modelName] = 1;
+
+		$adminGroup->permissions = $permissions;
+		$adminGroup->save();
+
 	}
 
 	/**

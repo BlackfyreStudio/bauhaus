@@ -18,6 +18,14 @@
 		</div>
 	@endif
 
+	@if (Session::has('message.error'))
+		<div class="alert alert-danger">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>{{ trans('bauhaus::messages.error.title') }}</strong>
+			{{ Session::get('message.error') }}
+		</div>
+	@endif
+
 	<div class="row">
 		<div class="col-sm-12">
 			{{ KraftHaus\Bauhaus\Block\Builder::render('top') }}

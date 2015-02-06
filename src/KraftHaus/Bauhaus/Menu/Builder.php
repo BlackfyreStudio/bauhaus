@@ -104,8 +104,35 @@ class Builder
 	private function buildMenu($menu)
 	{
 		$html = '';
+		$user = \Sentry::getUser();
 
 		foreach ($menu as $value) {
+
+			/*
+				Check if the current item should be filtered by permissions
+				If there's a permission requirement we check it, if fails we skip this iteration
+			*/
+			if (isset($value['permission'])) {
+
+				if (is_array($value['permission'])) {
+					$permissions = [];
+					foreach ($value['permission'] as $p) {
+						$p = str_replace('.','-',$p);
+						$permissions[] = $p;
+						$permissions[] = $p . '.read';
+					}
+
+					if (!$user->hasAnyAccess($permissions)) {
+						continue;
+					}
+
+				} else {
+					if (!$user->hasAnyAccess([$value['permission'],$value['permission'].'.view'])) {
+						continue;
+					}
+				}
+			}
+
 			$icon = '';
 			if (isset($value['icon'])) {
 				$icon = sprintf('<i class="fa fa-%s"></i> ', $value['icon']);
