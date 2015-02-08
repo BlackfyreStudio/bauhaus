@@ -18,12 +18,14 @@
 				{{ trans('bauhaus::index.button.overview') }}
 			</a>
 		</li>
+		@if($currentUser->hasAnyAccess([str_replace('.','-',$name),str_replace('.','-',$name).'.create']))
 		<li>
 			<a href="{{ route('admin.model.create', $name) }}">
 				<i class="fa fa-plus"></i>
 				{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
 			</a>
 		</li>
+		@endif
 	</ul>
 
 	@if ($model->getScopeMapper()->hasScopes())
@@ -137,11 +139,15 @@
 										<td>{{ $field->render() }}</td>
 									@endforeach
 
+
 									<td align="right">
+										@if($currentUser->hasAnyAccess([str_replace('.','-',$name),str_replace('.','-',$name).'.update']))
 										<a href="{{ route('admin.model.edit', [$name, $item->getIdentifier()]) }}" class="btn btn-xs btn-warning">
 											<i class="fa fa-edit"></i>&nbsp;{{ trans('bauhaus::index.button.edit') }}
 										</a>
+										@endif
 									</td>
+
 
 								</tr>
 							@endforeach
@@ -149,9 +155,11 @@
 						<tfoot>
 							<tr>
 								<td colspan="{{ count($model->getListMapper()->getFields()) + 1 }}">
+									@if($currentUser->hasAnyAccess([str_replace('.','-',$name),str_replace('.','-',$name).'.delete']))
 									<a href="{{ route('modal.delete', $name) }}" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#field-modal">
 										{{ trans('bauhaus::index.button.delete-selected', ['model' => $model->getPluralName()]) }}
 									</a>
+									@endif
 								</td>
 								<td align="right">
 									{{ $model->getListBuilder()->getPaginator()->links() }}

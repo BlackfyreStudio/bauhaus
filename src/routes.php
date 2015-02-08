@@ -12,6 +12,9 @@
 Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 
 	Route::group(['before' => 'bauhaus.auth'], function () {
+
+		View::share('currentUser',Sentry::getUser());
+
 		Route::get('/', [
 			'as'   => 'admin.dashboard',
 			'uses' => 'KraftHaus\Bauhaus\DashboardController@index'
