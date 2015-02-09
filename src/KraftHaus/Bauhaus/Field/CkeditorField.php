@@ -2,8 +2,8 @@
 /**
  * Created by IntelliJ IDEA.
  * User: Meki
- * Date: 2015.02.02.
- * Time: 19:15
+ * Date: 2015.02.09.
+ * Time: 6:34
  */
 
 namespace KraftHaus\Bauhaus\Field;
@@ -12,8 +12,8 @@ use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\Form;
 use Illuminate\Support\Facades\View;
 
-class MarkdownField extends BaseField {
-	protected $view = 'krafthaus/bauhaus::models.fields._markdown';
+class CkeditorField extends BaseField {
+	protected $view = 'krafthaus/bauhaus::models.fields._ckeditor';
 
 	/**
 	 * Render the field.
@@ -35,7 +35,7 @@ class MarkdownField extends BaseField {
 	 */
 	public function getAttributes()
 	{
-		$this->attribute('data-provide', 'markdown');
+		$this->attribute('class', 'ckeditor');
 		return $this->attributes;
 	}
 }

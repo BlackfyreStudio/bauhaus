@@ -56,6 +56,7 @@
 		</div>
 	</div>
 
+	<script src="{{ asset('packages/krafthaus/bauhaus/ckeditor/ckeditor.js') }}"></script>
 	<script src="{{ asset('packages/krafthaus/bauhaus/javascripts/application.min.js') }}"></script>
 	@yield('scripts')
 
