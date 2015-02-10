@@ -88,6 +88,9 @@ class ImageField extends FileField
 		foreach ($this->getSizes() as $size) {
 			$name = $this->getName();
 
+			$ext = pathinfo($name, PATHINFO_EXTENSION);
+			$name = str_replace('.' . $ext,'.' . strtolower($ext),$name);
+
 			try {
 				$image = Image::make(sprintf('%s/%s', $this->getLocation(), $name));
 			} catch (NotReadableException $e) {
