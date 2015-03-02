@@ -251,7 +251,7 @@ abstract class BaseField
 	 */
 	public function getName()
 	{
-		return strtolower($this->name);
+		return $this->name;
 	}
 
 	/**
