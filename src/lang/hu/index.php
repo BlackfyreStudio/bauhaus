@@ -11,25 +11,25 @@
 
 return [
 
-	'list-title'        => 'List :model',
-	'filter-title'      => 'Filter :model',
-	'browsing-filtered' => 'You are currently browsing filtered results.',
-	'no-filter-results' => 'The filter query did not return any results.',
-	'no-items-yet'      => 'You have no :model created yet.',
+	'list-title'        => 'Lista :model',
+	'filter-title'      => 'Szűrő :model',
+	'browsing-filtered' => 'Jelenleg egy szűrés eredményét böngészed.',
+	'no-filter-results' => 'Nincs a szűrési beállításoknak megfelelő elem.',
+	'no-items-yet'      => 'Nincs még :model beállítva.',
 
 	'button' => [
-		'create-new'      => 'Create new :model',
-		'reset-filters'   => 'Reset filters',
-		'edit'            => 'Edit',
-		'delete-selected' => 'Delete selected :model',
-		'reset'           => 'Reset',
-		'filter-submit'   => 'Filter :model',
-		'overview'        => 'Overview'
+		'create-new'      => 'Új :model',
+		'reset-filters'   => 'Szűrők nullázása',
+		'edit'            => 'Szerkesztés',
+		'delete-selected' => 'A kijelölt :model törlése',
+		'reset'           => 'Nullázás',
+		'filter-submit'   => 'Szűrő :model',
+		'overview'        => 'Áttekintés'
 	],
 
 	'sidebar' => [
-		'scopes' => 'Scopes',
-		'export' => 'Export ...'
+		'scopes' => 'Szkópok',
+		'export' => 'Exportálás ...'
 	]
 
 ];
