@@ -24,7 +24,7 @@ use Symfony\Component\Console\Input\InputArgument;
 class ScaffoldCommand extends Command
 {
 
-	/**
+    /**
 	 * The console command name.
 	 * @var string
 	 */
@@ -64,8 +64,8 @@ class ScaffoldCommand extends Command
 		$stub = str_replace('$NAME$', $modelName, $stub);
 
 		/* Check if the admin directory exists, if not then create it */
-		if (!is_writable($directory)) {
-			mkdir($directory);
+		if (!is_writable(app_path($directory))) {
+			mkdir(app_path($directory));
 		}
 
 		file_put_contents(app_path($directory . '/' . ucfirst($model) . 'Admin.php'), $stub);
@@ -82,25 +82,10 @@ class ScaffoldCommand extends Command
 		/*
 		 * Save the new permission group
 		 */
-		\Eloquent::unguard();
-		\KraftHaus\BauhausUser\PermissionRegister::create([
-			'name'=>$modelName
+
+		$this->call('bauhaus:user:grant', [
+			'--module' => $modelName
 		]);
-
-		$this->info('Permission created: ' . $modelName);
-
-		/*
-		 * Update the admin group with the new permission
-		 */
-		$adminGroup = \Sentry::findGroupById(1);
-
-		$permissions = $adminGroup->getPermissions();
-		$permissions[$modelName] = 1;
-
-		$adminGroup->permissions = $permissions;
-		$adminGroup->save();
-
-		$this->info('General permission assigned to group: ' . $adminGroup->getName());
 
 	}
 
