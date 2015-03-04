@@ -12,19 +12,19 @@
 return [
 
 	'success' => [
-		'title'         => 'Success!',
-		'model-created' => 'Created a new :model',
-		'model-updated' => 'Updated a :model',
-		'model-deleted' => 'Deleted :count :model'
+		'title'         => 'Siker!',
+		'model-created' => 'Új :model',
+		'model-updated' => ':model frissítése',
+		'model-deleted' => ':count :model törölve'
 	],
 
 	'warning' => [
-		'title' => 'Warning!'
+		'title' => 'Figyelem!'
 	],
 
 	'error' => [
-		'title'             => 'Whoops!',
-		'validation-errors' => 'Validation errors'
+		'title'             => 'Hupsz!',
+		'validation-errors' => 'Validációs hiba'
 	]
 
 ];
