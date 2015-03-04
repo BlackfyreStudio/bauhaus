@@ -12,17 +12,17 @@
 return [
 
 	'title' => [
-		'edit-model'   => 'Edit :model',
-		'create-model' => 'Create new :model'
+		'edit-model'   => 'Szerkesztés :model',
+		'create-model' => 'Új :model'
 	],
 
 	'button' => [
-		'back-to-index' => 'Back to :model',
-		'save'          => 'Save :model'
+		'back-to-index' => 'Vissza a :model',
+		'save'          => 'Mentés :model'
 	],
 
 	'modal' => [
-		'loading' => 'Loading...'
+		'loading' => 'Betöltés...'
 	]
 
 ];
