@@ -16,6 +16,7 @@ var paths = {
         'bower_components/momentjs/min/moment-with-locales.js',
 		'bower_components/bootstrap/dist/js/bootstrap.js',
 		'bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+		'bower_components/bootstrap-maxlength/bootstrap-maxlength.js',
 		'bower_components/to-markdown/src/to-markdown.js',
 		'bower_components/bootstrap-markdown/js/bootstrap-markdown.js',
 		'bower_components/tinymce/tinymce.js',

@@ -36,7 +36,7 @@ $('.field-date').datetimepicker({
         time: 'fa fa-clock-o',
         date: 'fa fa-calendar',
         up: 'fa fa-arrow-up',
-        down: 'fa fa-arrow-up',
+        down: 'fa fa-arrow-down',
         previous: 'fa fa-arrow-left',
         next: 'fa fa-arrow-right',
         today: 'glyphicon glyphicon-screenshot',
@@ -51,7 +51,7 @@ $('.field-time').datetimepicker({
         time: 'fa fa-clock-o',
         date: 'fa fa-calendar',
         up: 'fa fa-arrow-up',
-        down: 'fa fa-arrow-up',
+        down: 'fa fa-arrow-down',
         previous: 'fa fa-arrow-left',
         next: 'fa fa-arrow-right',
         today: 'glyphicon glyphicon-screenshot',
@@ -137,6 +137,7 @@ $(document).on('change', '.image-file-wrapper input[type=file]', function () {
     }
 });
 
+/* Slugger */
 var titleField = $('input[name="title"]'),
     slugField = $('input[name="slug"]'),
     slugLabel = $('label[for="slug"]');
@@ -160,3 +161,8 @@ if (titleField.length > 0 && slugField.length > 0) {
         });
     });
 }
+
+/* Max length */
+$('input[maxlength]').maxlength({
+    alwaysShow: true
+});
