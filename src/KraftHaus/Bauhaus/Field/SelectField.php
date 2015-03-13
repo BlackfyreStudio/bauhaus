@@ -62,8 +62,16 @@ class SelectField extends BaseField
 	 */
 	public function render()
 	{
-		return View::make($this->view)
-			->with('field', $this);
+    	switch ($this->getContext()) {
+			case BaseField::CONTEXT_LIST:
+				$list = $this->getOptions();
+				return $list[$this->value];
+			case BaseField::CONTEXT_FILTER:
+			case BaseField::CONTEXT_FORM:
+				return View::make($this->view)
+					->with('field', $this);
+				break;
+		}
 	}
 
 }
