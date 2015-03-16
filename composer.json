@@ -1,11 +1,11 @@
 {
-  "name": "krafthaus/bauhaus",
+  "name": "BlackfyreStudio/bauhaus",
   "description": "The missing Laravel 4 Admin Generator",
   "keywords": [
     "admin generator",
     "cms",
     "admin",
-    "krafthaus",
+    "BlackfyreStudio",
     "laravel",
     "backend",
     "form",
@@ -13,16 +13,6 @@
   ],
   "type": "laravel-package",
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "http://git.hinora.hu/void/bauhaususer.git"
-    },
-    {
-      "type": "vcs",
-      "url": "http://git.hinora.hu/void/bauhausblock.git"
-    }
-  ],
   "authors": [
     {
       "name": "KraftHaus",
@@ -38,7 +28,7 @@
     "intervention/image": "2.*",
     "maatwebsite/excel": "1.*",
     "cartalyst/tags": "~1.0",
-    "krafthaus/bauhaususer": "0.0.*"
+    "BlackfyreStudio/bauhaususer": "0.0.*"
   },
   "require-dev": {
     "phpunit/phpunit": "3.7.*",
@@ -54,8 +44,8 @@
     }
   },
   "suggest": {
-    "krafthaus/bauhaususer": "Add user capabilities to bauhaus",
-    "krafthaus/bauhausblock": "Simple block handling for laravel"
+    "BlackfyreStudio/bauhaususer": "Add user capabilities to bauhaus",
+    "BlackfyreStudio/bauhausblock": "Simple block handling for laravel"
   },
   "minimum-stability": "stable"
 }
